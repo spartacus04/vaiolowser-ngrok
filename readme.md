@@ -12,7 +12,7 @@ Qui puoi trovare Vaiolowser https://github.com/spartacus04/vaiolowser
 ## Utilizzo
 
 ### Installazione
-- Clona la repository
+- Clonare la repository
 
 `git clone https://github.com/spartacus04/vaiolowser-ngrok`
 
@@ -28,7 +28,7 @@ Qui puoi trovare Vaiolowser https://github.com/spartacus04/vaiolowser
 
 ### Avvio
 
-avviare `run.bat` o `run.sh` in base al tuo sistema operativo
+avviare `run.bat` o `run.sh` in base al sistema operativo
 
 `run [tcp/http/tls] [porta] [*nome gioco] [*percorso all'icona]`
 
