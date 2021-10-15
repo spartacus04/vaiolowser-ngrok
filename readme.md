@@ -30,4 +30,6 @@ Qui puoi trovare Vaiolowser https://github.com/spartacus04/vaiolowser
 
 avviare `run.bat` o `run.sh` in base al tuo sistema operativo
 
-`run [tcp/http/tls] [porta] [nome gioco]`
+`run [tcp/http/tls] [porta] [*nome gioco] [*percorso all'icona]`
+
+Gli argomenti col simbolo * non sono obbligatori

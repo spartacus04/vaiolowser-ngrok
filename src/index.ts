@@ -10,12 +10,12 @@ const { FIREBASE_ID, NGROK_TOKEN } = process.env;
 
 (async () => {
 	const args = process.argv.slice(2);
-	const [ protocol, port, game ] = args;
+	const [ protocol, port, game, icon ] = args;
 
 	if(!protocol || !port) return;
 
 
-	let imagePath = path.join(process.cwd(), 'server-icon.png');
+	let imagePath = path.resolve(icon);
 
 	if(!fs.existsSync(imagePath)) imagePath = path.resolve('../images/default.png');
 
