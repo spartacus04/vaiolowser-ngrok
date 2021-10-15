@@ -1,0 +1,27 @@
+{
+  "name": "ngrok-vaiolowser",
+  "version": "1.0.0",
+  "description": "",
+  "bin": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint . --ext .ts",
+    "tsc": "tsc",
+    "pkg": "pkg dist/index.js --out-path bin/",
+    "build": "npm run tsc",
+    "start": "node dist/index.js"
+  },
+  "author": "Andrea Bonari",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "ngrok": "^4.2.2",
+    "node-fetch": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.0",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint": "^8.0.1"
+  }
+}
