@@ -24,12 +24,12 @@ Qui puoi trovare Vaiolowser https://github.com/spartacus04/vaiolowser
 
 `npm run tsc`
 
-- Creare un file .env nella cartella del progetto e inseriscici i il token di ngrok e il project id di firebase, puoi seguire il template nel file .env-template
+- Creare un file .env nella cartella del progetto e inserisci al suo interno il project id di firebase, per aiutarti puoi seguire il file .env.template
 
 ### Avvio
 
 avviare `run.bat` o `run.sh` in base al sistema operativo
 
-`run [tcp/http/tls] [porta] [*nome gioco] [*percorso all'icona]`
+`run [tcp/http/tls] [porta] [nome gioco] [*percorso all'icona] [*separa ip da porta (true/false)] [*mostrare su discord (true/false)]`
 
 Gli argomenti col simbolo * non sono obbligatori

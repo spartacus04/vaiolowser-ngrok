@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "bin": "dist/index.js",
-  "type": "module",
   "scripts": {
     "lint": "eslint . --ext .ts",
     "tsc": "tsc",
@@ -16,10 +15,11 @@
   "dependencies": {
     "dotenv": "^10.0.0",
     "ngrok": "^4.2.2",
-    "node-fetch": "^3.0.0"
+    "node-fetch": "<3.*"
   },
   "devDependencies": {
     "@types/node": "^16.11.0",
+    "@types/node-fetch": "<3.*",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.0.0",
     "eslint": "^8.0.1"

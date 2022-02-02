@@ -1,45 +1,25 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import ngrok from 'ngrok';
-import fetch from 'node-fetch';
-import fs from 'fs';
-import path from 'path';
-
-const { FIREBASE_ID, NGROK_TOKEN } = process.env;
+import { argsParser } from './argsParser';
+import { getAuthTokens, publishIp, publishIpPayload } from './firebase';
+import { getNewIp } from './ngrok';
 
 (async () => {
-	const args = process.argv.slice(2);
-	const [ protocol, port, game, icon ] = args;
+	const args = argsParser(process.argv);
 
-	if(!protocol || !port) return;
+	const url = await getNewIp(args, await getAuthTokens());
+	console.log(url);
 
+	if(!args.broadcast) return;
 
-	let imagePath = path.resolve(icon);
-
-	if(!fs.existsSync(imagePath)) imagePath = path.resolve('../images/default.png');
-
-	const image = fs.readFileSync(imagePath, 'base64');
-
-
-	await ngrok.authtoken(NGROK_TOKEN);
-
-
-	const url = await ngrok.connect({ proto: protocol as ngrok.Ngrok.Protocol, addr: port, region: 'eu' });
-
-	const newUrl = url.replace('tcp://', '');
-	console.log(newUrl);
-
-	const data = {
-		ip: { stringValue : newUrl.split(':')[0] },
-		port: { stringValue : newUrl.split(':')[1] },
-		game: { stringValue : game || 'idk non hanno specificato il nome del gioco' },
-		image: { stringValue : image },
+	const payload : publishIpPayload = {
+		ip: url.split(':')[0],
+		port: url.split(':')[1],
+		game: args.game,
+		image: args.icon,
+		separateIp: args.separateIp,
 	};
 
-
-	await fetch(`https://firestore.googleapis.com/v1/projects/${FIREBASE_ID}/databases/(default)/documents/Vaiolowser-Ngrok-Ips`, {
-		method : 'POST',
-		body: JSON.stringify({ fields: data }),
-	});
+	await publishIp(payload);
 })();
